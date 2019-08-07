@@ -3,6 +3,8 @@ Django Admin Tool Command
 
 A reusable Django app that allows to run mangement commands from admin site
 
+.. image::https://travis-ci.org/daadu/django-admintool-command.svg?branch=master
+
 Installation
 ------------
 

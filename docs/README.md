@@ -7,7 +7,8 @@ In order to kickstart your Sphinx documentation, please do the following:
 If you haven't done so already, create a virtual environment for this reusable
 app like so:
 
-    mkvirtualenv -p python2.7 django-admintool-command
+    virtualenv -p python3.6 venv
+    source venv/bin/activate
     pip install Sphinx
     deactivate
     workon django-admintool-command

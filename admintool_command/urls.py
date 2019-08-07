@@ -1,11 +1,8 @@
-"""URLs for the admintool_command app."""
-# from compat import url
+from django.urls import path
 
-# from . import views
+from .views import AppCommandView
 
-
-# urlpatterns = [
-#     url(r'^$',
-#         views.YourView.as_view(),
-#         name='admintool_command_default'),
-# ]
+app_name = 'admintool_command'
+urlpatterns = [
+    path(r'<str:app_name>/<str:command>/', AppCommandView.as_view(), name="command"),
+]

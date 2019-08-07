@@ -1,0 +1,48 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static " admin/css/forms.css" %}">
+{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}
+
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">Home</a>
+    &rsaquo; commands &rsaquo; {{ app_name }} &rsaquo; {{ title }}
+</div>
+{% endblock %}
+
+{% block messages %}
+{% if messages %}
+<ul class="messagelist">{% for message in messages %}
+    <li
+    {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|safe }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock messages %}
+
+{% block content %}
+<div id="content-main">
+    <form action="." method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td><input type="submit" value="Run"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{% endblock %}

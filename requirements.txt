@@ -1,2 +1,3 @@
 django
 django-compat
+django_common

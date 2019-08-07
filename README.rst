@@ -42,7 +42,7 @@ Add the ``admintool_command`` URLs to your ``urls.py``
 
 Usage
 -----
-
+TODO: Describe about django-admin-tools
 TODO: Describe usage or point to docs. Also describe available settings and
 templatetags.
 

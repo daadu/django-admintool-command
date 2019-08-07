@@ -9,3 +9,5 @@ db.sqlite
 dist/
 docs/_build/
 local_settings.py
+venv/
+.idea/

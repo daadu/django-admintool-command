@@ -17,9 +17,15 @@ if 'VIRTUAL_ENV' in os.environ:
 
 
 def main():
-    from flake8.main import DEFAULT_CONFIG
-    from flake8.engine import get_style_guide
-    from flake8.hooks import run
+    if sys.platform.startswith('win'):
+        DEFAULT_CONFIG = os.path.expanduser(r'~\.flake8')
+    else:
+        DEFAULT_CONFIG = os.path.join(
+            os.getenv('XDG_CONFIG_HOME') or os.path.expanduser('~/.config'),
+            'flake8'
+        )
+    from flake8.api.legacy import get_style_guide
+    from flake8.main.cli import main as run
 
     gitcmd = "git diff-index --cached --name-only HEAD"
 
@@ -34,6 +40,7 @@ def main():
     report = flake8_style.check_files(files_modified)
 
     return report.total_errors
+
 
 if __name__ == '__main__':
     sys.exit(main())

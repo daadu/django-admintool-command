@@ -27,9 +27,9 @@ def main():
     from flake8.api.legacy import get_style_guide
     from flake8.main.cli import main as run
 
-    gitcmd = "git diff-index --cached --name-only HEAD"
+    gitcmd = "git diff-index HEAD"
 
-    _, files_modified, _ = run(gitcmd)
+    _, files_modified, _ = run(gitcmd.split())
 
     # remove non-py files and files which no longer exist
     files_modified = filter(

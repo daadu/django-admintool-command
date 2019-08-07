@@ -1,6 +1,6 @@
 coverage
 fabric3
-flake8>=3.7.7,<3.8
+flake8
 ipdb
 mixer
 mock

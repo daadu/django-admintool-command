@@ -19,7 +19,7 @@ To get the latest commit from GitHub
 
 .. code-block:: bash
 
-    pip install -e git+git://github.com/django/django-reusable-app-template.git#egg=admintool_command
+    pip install -e git+git://github.com/daadu/django-admintool-command.git#egg=admintool_command
 
 TODO: Describe further installation steps (edit / remove the examples below):
 
@@ -46,6 +46,7 @@ Add the ``admintool_command`` URLs to your ``urls.py``
 Usage
 -----
 TODO: Describe about django-admin-tools
+
 TODO: Describe usage or point to docs. Also describe available settings and
 templatetags.
 

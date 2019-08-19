@@ -11,7 +11,7 @@ def get_command_instance(app_name, command):
     _module = import_module(".".join(module_name))
     _class = getattr(_module, class_name)
 
-    return _class
+    return _class()
 
 
 def colourstrip(data):

@@ -1,6 +1,4 @@
 import traceback
-from io import StringIO
-
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.storage.base import Message
 from django.core.management import call_command
@@ -8,6 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
 from django.views import View
+from io import StringIO
 
 from admintool_command.utils import get_command_instance, colourstrip
 
@@ -20,9 +19,9 @@ class AppCommandView(UserPassesTestMixin, View):
         instance = get_command_instance(app_name, command)
         # handle from AdminCommand if has view handler
         if hasattr(instance, "view"):
-            return instance.view(instance, request=request, app_name=app_name, command=command)
+            return instance.view(request=request, app_name=app_name, command=command)
 
-        context = instance.init_context(instance, request, app_name=app_name, command=command)
+        context = instance.init_context(request=request, app_name=app_name, command=command)
         context["title"] = mark_safe(instance.name if instance.name else "%s" % command)
         context["app_name"] = app_name
         context["form"] = instance.Form()
@@ -32,15 +31,15 @@ class AppCommandView(UserPassesTestMixin, View):
         instance = get_command_instance(app_name, command)
         # handle from AdminCommand if has view handler
         if hasattr(instance, "view"):
-            return instance.view(instance, request=request, app_name=app_name, command=command)
+            return instance.view(request=request, app_name=app_name, command=command)
 
         form = instance.Form(request.POST)
-        context = instance.init_context(instance, request=request, app_name=app_name, command=command)
+        context = instance.init_context(request=request, app_name=app_name, command=command)
         context["title"] = mark_safe(instance.name if instance.name else "%s" % command)
         context["app_name"] = app_name
         context["form"] = form
         if form.is_valid():
-            args, options = instance.get_command_arguments(instance, forms_data=form.cleaned_data)
+            args, options = instance.get_command_arguments(forms_data=form.cleaned_data)
             output = StringIO()
             extra_tags = ""
             try:

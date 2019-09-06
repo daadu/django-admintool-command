@@ -22,5 +22,5 @@ def colourstrip(data):
         data = data[:find] + data[find + 5:]
         find = data.find('\x1b')
         data = data[:find] + data[find+4:]
-    data.replace("[31m", "")
+    data = data.replace("[31m", "")
     return data.strip()

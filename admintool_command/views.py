@@ -45,6 +45,7 @@ class AppCommandView(UserPassesTestMixin, View):
             try:
                 call_command(command, stdout=output, no_color=True, *args, **options)
             except Exception as e:
+                print(traceback.format_exc())
                 output.write(traceback.format_exc())
                 output.seek(0)
                 extra_tags = "error"

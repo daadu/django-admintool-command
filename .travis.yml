@@ -17,10 +17,7 @@ install:
     - pip install coveralls
 
 script:
-    - cd admintool_command/tests
-    - ./runtests.py
-    - mv .coverage ../../
-    - cd ../../
+    - python manage.py test
 
 matrix:
     exclude:

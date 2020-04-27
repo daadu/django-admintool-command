@@ -49,7 +49,7 @@ setup(
     name="django-admintool-command",
     version=app.__version__,
     description=read('DESCRIPTION'),
-    long_description=read('README.rst'),
+    long_description="",
     license='The MIT License',
     platforms=['OS Independent'],
     keywords='django, django admin, django management commands, app, reusable',

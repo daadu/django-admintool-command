@@ -55,7 +55,7 @@ setup(
     keywords='django, django admin, django management commands, app, reusable',
     author='Harsh Bhikadia',
     author_email='harsh@bhikadia.com',
-    url="https://github.com/django/django-reusable-app-template",
+    url="https://github.com/daadu/django-admintool-command",
     packages=find_packages(),
     include_package_data=True,
     install_requires=install_requires,

@@ -33,6 +33,7 @@ TEMPLATES = [{
         'context_processors': (
             'django.contrib.auth.context_processors.auth',
             'django.template.context_processors.request',
+            'django.contrib.messages.context_processors.messages',
         )
     }
 }]
@@ -61,6 +62,9 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
 ]
+
+MIDDLEWARE = MIDDLEWARE_CLASSES
 
 SECRET_KEY = 'foobar'

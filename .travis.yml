@@ -11,7 +11,7 @@ env:
     - DJANGO=django==2.2.*
 
 install:
-    - pip install -r test_requirements.txt --use-mirrors
+    - pip install -r test_requirements.txt
     - pip install $DJANGO
     - pip install coveralls
 

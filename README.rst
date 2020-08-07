@@ -23,12 +23,17 @@ To get the latest commit from GitHub
 
 TODO: Describe further installation steps (edit / remove the examples below):
 
+Follow installation instructions for https://github.com/django-admin-tools/django-admin-tools
+
 Add ``admintool_command`` to your ``INSTALLED_APPS``
 
 .. code-block:: python
 
     INSTALLED_APPS = (
         ...,
+        'admin_tools',
+        'admin_tools.menu',
+        'admin_tools.dashboard',
         'admintool_command',
     )
 
@@ -45,6 +50,20 @@ Add the ``admintool_command`` URLs to your ``urls.py``
 
 Usage
 -----
+
+Commands need to inherit from `admintool_command.AdminCommand` and
+implement at least a `Form` which is used to present the command arguments.
+
+Then these are added to settings like:
+
+.. code-block:: python
+
+    ADMIN_TOOLS_COMMANDS = {
+        'app_name': ['command_name'],
+    }
+
+Optionally, add `admintool_command.dashboards.AdminCommandMenu` to your django-admin-tools menu.
+
 TODO: Describe about django-admin-tools
 
 TODO: Describe usage or point to docs. Also describe available settings and

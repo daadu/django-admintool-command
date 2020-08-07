@@ -1,3 +1,7 @@
+from django import forms
+
+from .command import AdminCommand
+
 def get_full_class_name(app_name, command):
     return "%s.management.commands.%s.Command" % (app_name, command)
 
@@ -11,7 +15,16 @@ def get_command_instance(app_name, command):
     _module = import_module(".".join(module_name))
     _class = getattr(_module, class_name)
 
-    return _class()
+    instance = _class()
+    if isinstance(instance, AdminCommand):
+        return instance
+
+    setattr(instance, "name", command)
+    setattr(instance, "Form", forms.Form)
+    setattr(instance, "template", "admintool_command/command.html")
+    setattr(instance, "init_context", lambda *args, **kwargs: {})
+    setattr(instance, "get_command_arguments", lambda *args, **kwargs: ([], {}))
+    return instance
 
 
 def colourstrip(data):

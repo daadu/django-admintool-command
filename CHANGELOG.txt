@@ -1,5 +1,12 @@
-=== 0.0.X (onggoing, to be released as 0.1) ===
-- Initial commit
+=== 0.1.1 ===
+- [readme] start describing `django-admin-tools`
+- [template] `command.html`: Remove misplaced space
+- [command] `get_command_instance`: Support `BaseCommand`
+- [readme] migrate to markdown
+- [setup] fix `description` and added `long_description`
+
+=== 0.1 ===
+- Initial release
 
 
 # Suggested file syntax:

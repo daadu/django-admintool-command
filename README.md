@@ -38,6 +38,7 @@ Add the `admintool_command` URLs to your `urls.py`
     urlpatterns = [
         url(r'^admin/commands/', include('admintool_command.urls')),
     ]
+> NOTE: if you are using `admin` prefixed url in Django 3.2+ for `admintool_command` and `admin.site` both then put it above the "admin" site url or else you will get HTTP 404.
 
 Usage
 -----
